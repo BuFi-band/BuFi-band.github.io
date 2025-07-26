@@ -23,6 +23,7 @@ h2 {
     font-size: 2.5rem; 
     margin-bottom: 1.5rem;
     color: #00cce4;
+    text-align: center;
 }
 
 .container {
@@ -35,6 +36,7 @@ h2 {
 section {
     padding: 5rem 0;
     border-bottom: 1px solid #111;
+    margin-bottom: 2rem;
 }
 
 /* ===== HERO SECTION ===== */
@@ -43,13 +45,14 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1470&q=80') center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.32), rgb(0, 0, 0)), 
+                url('../images/backdrop.jpg') center/cover;
     text-align: center;
+    margin-bottom: 0;
 }
 
 .hero-logo {
-    max-width: 500px;
+    max-width: 700px;
     width: 100%;
     margin-bottom: 2rem;
     filter: drop-shadow(0 0 15px rgba(0, 105, 117, 0.716));
@@ -59,6 +62,127 @@ section {
     font-size: 1.2rem;
     max-width: 600px;
     margin: 0 auto 2rem;
+}
+
+/* ===== ABOUT SECTION ===== */
+#about {
+    text-align: center;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: #00cce4;
+    font-weight: 600;
+}
+
+.emphasis {
+    font-style: italic;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.emphasis::before,
+.emphasis::after {
+    content: '"';
+    color: #00cce4;
+    font-size: 1.5rem;
+    position: relative;
+    top: 0.2rem;
+}
+
+.emphasis::before {
+    margin-right: 0.3rem;
+}
+
+.emphasis::after {
+    margin-left: 0.3rem;
+}
+
+/* ===== MEMBERS SECTION ===== */
+.band-members {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.member {
+    width: 150px;
+    text-align: center;
+    position: relative;
+}
+
+.member img {
+    width: 100%;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.member:hover img {
+    border-color: #00cce4;
+    transform: translateY(-2px) scale(1.02);
+    filter: drop-shadow(0 0 12px rgba(0, 204, 228, 0.8));
+}
+
+.member h3 {
+    margin-top: 1rem;
+    color: #00cce4;
+    transition: all 0.3s ease;
+}
+
+.member:hover h3 {
+    transform: scale(1.02);
+    text-shadow: 0 0 8px rgba(0, 204, 228, 0.5);
+}
+
+/* ===== MUSIC SECTION ===== */
+#music {
+    background: #111;
+    text-align: center;
+}
+
+.track-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.track {
+    background: rgba(255,255,255,0.05);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid #00cce4;
+}
+
+.track:last-child {
+    margin-bottom: 0;
+}
+
+.track-info h3 {
+    color: #00cce4;
+    margin-bottom: 0.5rem;
+}
+
+.track-info p {
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.audio-player {
+    width: 100%;
+    margin-top: 1rem;
 }
 
 /* ===== SETLIST SECTION ===== */
@@ -110,159 +234,6 @@ section {
     margin-top: 0.3rem;
 }
 
-/* ===== BUTTONS ===== */
-.btn {
-    display: inline-block;
-    padding: 12px 30px;
-    background: #00cce4;
-    color: black;
-    text-decoration: none;
-    border: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-}
-
-.btn:hover {
-    background: #00a5b9;
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,204,228,0.4);
-}
-
-/* ===== ABOUT SECTION ===== */
-#about {
-    text-align: center;
-}
-
-.about-content {
-    max-width: 800px;
-    margin: 0 auto 3rem;
-    text-align: center;
-    font-size: 1.1rem;
-    line-height: 1.8;
-}
-
-.about-content p {
-    margin-bottom: 1.5rem;
-}
-
-.highlight {
-    color: #00cce4;
-    font-weight: 600;
-}
-
-.emphasis {
-    font-style: italic;
-    position: relative;
-    padding: 0 1rem;
-}
-
-.emphasis::before,
-.emphasis::after {
-    content: '"';
-    color: #00cce4;
-    font-size: 1.5rem;
-    position: relative;
-    top: 0.2rem;
-}
-
-.emphasis::before {
-    margin-right: 0.3rem;
-}
-
-.emphasis::after {
-    margin-left: 0.3rem;
-}
-
-.underline {
-    position: relative;
-    display: inline-block;
-}
-
-.underline::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 2px;
-    background: #00cce4;
-    transform: scaleX(0.9);
-}
-
-/* ===== MEMBERS SECTION ===== */
-.band-members {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 2rem;
-    margin-top: 3rem;
-}
-
-.member {
-    width: 150px;
-    text-align: center;
-    position: relative;
-}
-
-.member img {
-    width: 100%;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-}
-
-.member:hover img {
-    border-color: #00cce4;
-    transform: translateY(-2px) scale(1.02);
-    filter: drop-shadow(0 0 12px rgba(0, 204, 228, 0.8));
-}
-
-.member h3 {
-    margin-top: 1rem;
-    color: #00cce4;
-    transition: all 0.3s ease;
-}
-
-.member:hover h3 {
-    transform: scale(1.02);
-    text-shadow: 0 0 8px rgba(0, 204, 228, 0.5);
-}
-
-/* ===== MUSIC SECTION ===== */
-#music {
-    background: #111;
-    text-align: center;
-}
-
-.album-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.album {
-    position: relative;
-    overflow: hidden;
-    border: 2px solid #333;
-    transition: all 0.3s ease;
-}
-
-.album:hover {
-    border-color: #00cce4;
-}
-
-.album img {
-    width: 100%;
-    transition: transform 0.3s ease;
-}
-
-.album:hover img {
-    transform: scale(1.05);
-}
-
 /* ===== LIVE SECTION ===== */
 #live {
     text-align: center;
@@ -275,7 +246,7 @@ section {
 
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     margin: 2rem 0;
@@ -303,15 +274,9 @@ section {
 }
 
 /* ===== TOUR SECTION ===== */
-#tour {
-    background: #000; /* Same as other sections */
-    padding: 5rem 0; /* Same vertical padding as other sections */
-    border-bottom: 1px solid #111; /* Same border as other sections */
-}
-
 .tour-list {
     list-style: none;
-    max-width: 800px; /* Slightly wider than text content */
+    max-width: 800px;
     margin: 0 auto;
 }
 
@@ -321,7 +286,7 @@ section {
     background: rgba(255,255,255,0.05);
     transition: all 0.3s ease;
     border-left: 3px solid #00cce4;
-    margin-bottom: 1rem; /* Space between stacked items */
+    margin-bottom: 1rem;
 }
 
 .tour-item:last-child {
@@ -367,27 +332,6 @@ section {
     font-size: 0.9rem;
 }
 
-.tour-btn {
-    display: inline-block;
-    padding: 8px 20px;
-    background: #00cce4;
-    color: black;
-    text-decoration: none;
-    border: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-}
-
-.tour-btn:hover {
-    background: #00a5b9;
-    transform: translateY(-2px);
-    box-shadow: 0 3px 10px rgba(0,204,228,0.4);
-}
-
 /* ===== CONTACT SECTION ===== */
 #contact {
     text-align: center;
@@ -427,6 +371,31 @@ section {
 
 .email-link:hover {
     text-decoration: underline;
+}
+
+/* ===== BUTTONS ===== */
+.btn, .tour-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: #00cce4;
+    color: black;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover, .tour-btn:hover {
+    background: #00a5b9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,204,228,0.4);
+}
+
+.tour-btn {
+    padding: 8px 20px;
+    font-size: 0.8rem;
 }
 
 /* ===== NAVIGATION ===== */
@@ -482,6 +451,7 @@ footer {
     padding: 2rem;
     background: #000;
     border-top: 1px solid #00cce4;
+    margin-top: 2rem;
 }
 
 footer p {
@@ -503,6 +473,10 @@ footer p {
         align-items: center;
     }
 
+    .song-list {
+        grid-template-columns: 1fr;
+    }
+
     .tour-date {
         flex-direction: column;
         gap: 0.5rem;
@@ -516,5 +490,20 @@ footer p {
 
     nav a {
         margin: 0.5rem 0;
+    }
+}
+
+@media (max-width: 480px) {
+    section {
+        padding: 4rem 0;
+    }
+    
+    .hero-logo {
+        max-width: 300px;
+    }
+    
+    .tour-btn {
+        margin-top: 1rem;
+        align-self: center;
     }
 }
