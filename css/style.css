@@ -303,25 +303,89 @@ section {
 }
 
 /* ===== TOUR SECTION ===== */
-.tour-date {
+#tour {
+    background: #000; /* Same as other sections */
+    padding: 5rem 0; /* Same vertical padding as other sections */
+    border-bottom: 1px solid #111; /* Same border as other sections */
+}
+
+.tour-list {
+    list-style: none;
+    max-width: 800px; /* Slightly wider than text content */
+    margin: 0 auto;
+}
+
+.tour-item {
+    position: relative;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.05);
+    transition: all 0.3s ease;
+    border-left: 3px solid #00cce4;
+    margin-bottom: 1rem; /* Space between stacked items */
+}
+
+.tour-item:last-child {
+    margin-bottom: 0;
+}
+
+.tour-item:hover {
+    background: rgba(0,204,228,0.1);
+    transform: translateX(5px);
+}
+
+.tour-info {
     display: flex;
     justify-content: space-between;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid #222;
-    transition: all 0.3s ease;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
-.tour-date:hover {
-    background: rgba(0,204,228,0.1);
-}
-
-.tour-date:last-child {
-    border-bottom: none;
-}
-
-.tour-date .date {
+.tour-date {
     color: #00cce4;
     font-weight: bold;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    font-size: 1.2rem;
+    min-width: 120px;
+}
+
+.tour-details {
+    flex: 1;
+    min-width: 200px;
+}
+
+.tour-venue {
+    display: block;
+    color: white;
+    margin-bottom: 0.3rem;
+}
+
+.tour-city {
+    display: block;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.tour-btn {
+    display: inline-block;
+    padding: 8px 20px;
+    background: #00cce4;
+    color: black;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.tour-btn:hover {
+    background: #00a5b9;
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(0,204,228,0.4);
 }
 
 /* ===== CONTACT SECTION ===== */
