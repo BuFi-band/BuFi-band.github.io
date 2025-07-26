@@ -74,18 +74,36 @@ section {
 }
 
 .song-list li {
-    padding: 1rem;
+    position: relative;
+    padding: 1rem 1rem 1rem 1.5rem;
     background: rgba(255,255,255,0.05);
-    border-left: 3px solid #00cce4;
     transition: all 0.3s ease;
+}
+
+.song-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #00cce4;
 }
 
 .song-list li:hover {
     background: rgba(0,204,228,0.1);
+}
+
+.song-list li:hover .song-name {
     transform: translateX(5px);
 }
 
-.song-list li span {
+.song-name {
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.song-name span {
     display: block;
     color: #00cce4;
     font-size: 0.9rem;
@@ -116,6 +134,64 @@ section {
 #about {
     text-align: center;
 }
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.about-content p {
+    margin-bottom: 1.5rem;
+}
+
+.highlight {
+    color: #00cce4;
+    font-weight: 600;
+}
+
+.emphasis {
+    font-style: italic;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.emphasis::before,
+.emphasis::after {
+    content: '"';
+    color: #00cce4;
+    font-size: 1.5rem;
+    position: relative;
+    top: 0.2rem;
+}
+
+.emphasis::before {
+    margin-right: 0.3rem;
+}
+
+.emphasis::after {
+    margin-left: 0.3rem;
+}
+
+.underline {
+    position: relative;
+    display: inline-block;
+}
+
+.underline::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: #00cce4;
+    transform: scaleX(0.9);
+}
+
+/* ===== MEMBERS SECTION ===== */
 
 .band-members {
     display: flex;
