@@ -192,7 +192,6 @@ section {
 }
 
 /* ===== MEMBERS SECTION ===== */
-
 .band-members {
     display: flex;
     justify-content: center;
@@ -209,13 +208,11 @@ section {
 .member img {
     width: 100%;
     border-radius: 50%;
-    filter: grayscale(100%);
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
 
 .member:hover img {
-    filter: grayscale(0%);
     border-color: #00cce4;
 }
 
@@ -340,6 +337,7 @@ section {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+    text-decoration: none;
 }
 
 .social-links a:hover {
@@ -375,7 +373,7 @@ nav .logo {
     height: 40px;
 }
 
-nav a {
+nav > div > a {
     color: white;
     text-decoration: none;
     margin-left: 2rem;
@@ -386,7 +384,7 @@ nav a {
     position: relative;
 }
 
-nav a:hover {
+nav > div > a:hover {
     color: #00cce4;
 }
 
