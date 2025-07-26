@@ -35,7 +35,7 @@ h2 {
 
 section {
     padding: 5rem 0;
-    border-bottom: 1px solid #111;
+    border-bottom: 1px;
     margin-bottom: 2rem;
 }
 
@@ -150,7 +150,6 @@ section {
 
 /* ===== MUSIC SECTION ===== */
 #music {
-    background: #111;
     text-align: center;
 }
 
