@@ -203,6 +203,7 @@ section {
 .member {
     width: 150px;
     text-align: center;
+    position: relative;
 }
 
 .member img {
@@ -214,11 +215,19 @@ section {
 
 .member:hover img {
     border-color: #00cce4;
+    transform: translateY(-2px) scale(1.02);
+    filter: drop-shadow(0 0 12px rgba(0, 204, 228, 0.8));
 }
 
 .member h3 {
     margin-top: 1rem;
     color: #00cce4;
+    transition: all 0.3s ease;
+}
+
+.member:hover h3 {
+    transform: scale(1.02);
+    text-shadow: 0 0 8px rgba(0, 204, 228, 0.5);
 }
 
 /* ===== MUSIC SECTION ===== */
