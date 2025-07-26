@@ -1,348 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLACK LIGHT | Modern Rock Band</title>
-    <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #1A1A1A;
-            color: white;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* ===== TYPOGRAPHY ===== */
-        h1, h2, h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 2px;
-            font-weight: 400;
-        }
-        
-        h1 { font-size: 4rem; }
-        h2 { font-size: 2.5rem; margin-bottom: 1.5rem; }
-        
-        /* ===== LAYOUT ===== */
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem 0;
-        }
-        
-        section {
-            padding: 5rem 0;
-            border-bottom: 1px solid #333;
-        }
-        
-        /* ===== HERO SECTION ===== */
-        #hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
-                        url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80') center/cover;
-            text-align: center;
-        }
-        
-        #hero h1 {
-            font-size: 6rem;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-        
-        #hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: #FF0000;
-            color: white;
-            text-decoration: none;
-            border: none;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn:hover {
-            background: #cc0000;
-            transform: translateY(-3px);
-        }
-        
-        /* ===== ABOUT SECTION ===== */
-        #about {
-            text-align: center;
-        }
-        
-        .band-members {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .member {
-            width: 150px;
-        }
-        
-        .member img {
-            width: 100%;
-            border-radius: 50%;
-            filter: grayscale(100%);
-            transition: all 0.3s ease;
-        }
-        
-        .member:hover img {
-            filter: grayscale(0);
-        }
-        
-        .member h3 {
-            margin-top: 1rem;
-        }
-        
-        /* ===== MUSIC SECTION ===== */
-        #music {
-            background: #000;
-        }
-        
-        .album-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .album {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .album img {
-            width: 100%;
-            transition: transform 0.3s ease;
-        }
-        
-        .album:hover img {
-            transform: scale(1.05);
-        }
-        
-        /* ===== TOUR SECTION ===== */
-        .tour-date {
-            display: flex;
-            justify-content: space-between;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #333;
-        }
-        
-        .tour-date:last-child {
-            border-bottom: none;
-        }
-        
-        .tour-date .date {
-            color: #FF0000;
-            font-weight: bold;
-        }
-        
-        /* ===== CONTACT SECTION ===== */
-        #contact {
-            text-align: center;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 1.5rem;
-            transition: color 0.3s ease;
-        }
-        
-        .social-links a:hover {
-            color: #FF0000;
-        }
-        
-        /* ===== NAVIGATION ===== */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            z-index: 1000;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 2rem;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease;
-        }
-        
-        nav a:hover {
-            color: #FF0000;
-        }
-        
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            h1 { font-size: 3rem; }
-            h2 { font-size: 2rem; }
-            
-            .band-members {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .tour-date {
-                flex-direction: column;
-                gap: 0.5rem;
-            }
-        }
-    </style>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>BuFi | Moderní Rocková Kapela</title>
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
     <nav>
-        <span>BLACK LIGHT</span>
+        <img src="images/logo.png" alt="BuFi Logo" class="logo">
         <div>
-            <a href="#about">About</a>
-            <a href="#music">Music</a>
-            <a href="#tour">Tour</a>
-            <a href="#contact">Contact</a>
+            <a href="#about">O kapele</a>
+            <a href="#music">Hudba</a>
+            <a href="#setlist">Setlist</a>
+            <a href="#tour">Turné</a>
+            <a href="#contact">Kontakt</a>
         </div>
     </nav>
-    
-    <!-- Hero Section -->
+
     <section id="hero">
         <div>
-            <h1>BLACK LIGHT</h1>
-            <p>Modern rock with raw energy. New album 'Neon Shadows' out now.</p>
-            <a href="#music" class="btn">Listen Now</a>
+            <img src="images/logo.png" alt="Burned Fingers" class="hero-logo">
+            <p>Art-punk kapela z Kladna</p>
+            <a href="#music" class="btn">Poslouchat</a>
         </div>
     </section>
-    
-    <!-- About Section -->
+
     <section id="about" class="container">
-        <h2>Who We Are</h2>
-        <p>Formed in 2018, Black Light delivers explosive live performances and genre-defying sound. Hailing from Los Angeles, we've toured across 3 continents sharing our music with passionate fans.</p>
-        
+        <h2>Kdo jsme</h2>
+        <p>Burned Fingers (zkráceně BuFi) je moderní rocková kapela známá svou explozivní energií a nezaměnitelným zvukem. Působíme z Prahy a hrajeme po celé Evropě.</p>
+
         <div class="band-members">
             <div class="member">
                 <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Alex">
                 <h3>Alex</h3>
-                <p>Vocals</p>
+                <p>Zpěv</p>
             </div>
             <div class="member">
                 <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jamie">
                 <h3>Jamie</h3>
-                <p>Guitar</p>
+                <p>Kytara</p>
             </div>
             <div class="member">
                 <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dylan">
                 <h3>Dylan</h3>
-                <p>Bass</p>
+                <p>Basa</p>
             </div>
             <div class="member">
                 <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Riley">
                 <h3>Riley</h3>
-                <p>Drums</p>
+                <p>Bicí</p>
             </div>
         </div>
     </section>
-    
-    <!-- Music Section -->
+
     <section id="music" class="container">
-        <h2>Our Music</h2>
-        <p>Stream our latest releases</p>
-        
+        <h2>Hudba</h2>
+        <p>Poslechni si naše nejnovější nahrávky</p>
+
         <div class="album-grid">
             <div class="album">
-                <img src="https://via.placeholder.com/500x500/FF0000/FFFFFF?text=Neon+Shadows" alt="Neon Shadows">
+                <img src="https://via.placeholder.com/500x500/00cce4/000000?text=Nové+Album" alt="Album">
             </div>
             <div class="album">
-                <img src="https://via.placeholder.com/500x500/000000/FFFFFF?text=Midnight+Electric" alt="Midnight Electric">
+                <img src="https://via.placeholder.com/500x500/000000/00cce4?text=Echo+v+Tmě" alt="Album 2">
             </div>
             <div class="album">
-                <img src="https://via.placeholder.com/500x500/1A1A1A/FFFFFF?text=Vol.+1" alt="Vol. 1">
+                <img src="https://via.placeholder.com/500x500/1A1A1A/00cce4?text=Demo+EP" alt="Demo">
             </div>
         </div>
     </section>
-    
-    <!-- Tour Section -->
+
+    <section id="setlist" class="container">
+        <h2>Aktuální setlist</h2>
+        <div class="setlist">
+            <ul class="song-list">
+                <li>Pet Sematary <span>Ramones</span></li>
+                <li>Burning for You <span>Blue Öyster Cult</span></li>
+                <li>Stacy's Mom <span>Fountains Of Wayne</span></li>
+                <li>Because the Night <span>Patti Smith</span></li>
+                <li>Message In A Bottle <span>The Police</span></li>
+                <li>There Is a Light That Never Goes Out <span>The Smiths</span></li>
+                <li>Boulevard of Broken Dreams <span>Green Day</span></li>
+                <li>Punk Sex Pivo <span>The Fialky</span></li>
+                <li>Don't Listen To The Radio <span>The Vines</span></li>
+                <li>Bohemian Like You <span>The Dandy Warhols</span></li>
+                <li>Steady, As She Goes <span>The Raconteurs</span></li>
+                <li>Popeláři <span>Miša Růžičková</span></li>
+                <li>Jožin Z Bažin <span>Ivan Mladek</span></li>
+                <li>Méla krátkou ofinu <span>Vypsaná Fixa</span></li>
+                <li>Song 2 <span>Blur</span></li>
+            </ul>
+        </div>
+    </section>
+
     <section id="tour" class="container">
-        <h2>Tour Dates</h2>
-        
+        <h2>Turné</h2>
+
         <div class="tour-date">
-            <span class="date">OCT 15</span>
-            <span class="city">Los Angeles, CA</span>
-            <span class="venue">The Wiltern</span>
-            <a href="#" class="btn">Tickets</a>
+            <span class="date">15. ŘÍJ</span>
+            <span class="city">Praha</span>
+            <span class="venue">Roxy</span>
+            <a href="#" class="btn">Vstupenky</a>
         </div>
-        
+
         <div class="tour-date">
-            <span class="date">NOV 2</span>
-            <span class="city">New York, NY</span>
-            <span class="venue">Bowery Ballroom</span>
-            <a href="#" class="btn">Tickets</a>
+            <span class="date">2. LIS</span>
+            <span class="city">Brno</span>
+            <span class="venue">Fléda</span>
+            <a href="#" class="btn">Vstupenky</a>
         </div>
-        
+
         <div class="tour-date">
-            <span class="date">NOV 18</span>
-            <span class="city">Chicago, IL</span>
-            <span class="venue">Metro</span>
-            <a href="#" class="btn">Tickets</a>
+            <span class="date">18. LIS</span>
+            <span class="city">Ostrava</span>
+            <span class="venue">Barrák</span>
+            <a href="#" class="btn">Vstupenky</a>
         </div>
     </section>
-    
-    <!-- Contact Section -->
+
     <section id="contact" class="container">
-        <h2>Get In Touch</h2>
-        <p>For bookings and press inquiries</p>
-        
+        <h2>Kontakt</h2>
+        <p>Pro rezervace a mediální dotazy nás kontaktujte</p>
+
         <div class="social-links">
             <a href="#"><i class="fab fa-instagram"></i></a>
             <a href="#"><i class="fab fa-spotify"></i></a>
             <a href="#"><i class="fab fa-youtube"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
         </div>
-        
-        <p>BOOKINGS: <a href="mailto:bookings@blacklight.com">bookings@blacklight.com</a></p>
+
+        <p>BOOKING: <a href="mailto:booking@bufi.cz" class="email-link">booking@bufi.cz</a></p>
     </section>
-    
-    <!-- Footer -->
-    <footer style="text-align: center; padding: 2rem; background: #000;">
-        <p>&copy; 2023 BLACK LIGHT. Designed with ♡ in Los Angeles.</p>
+
+    <footer>
+        <p>&copy; 2025 Burned Fingers (BuFi)</p>
     </footer>
-    
-    <!-- Font Awesome for icons -->
-    <script src="https://kit.fontawesome.com/your-code.js" crossorigin="anonymous"></script>
 </body>
 </html>
