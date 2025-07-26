@@ -192,19 +192,36 @@ section {
 
 .song-list {
     list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1rem;
+    columns: 3; /* Creates 3 columns */
+    column-gap: 1rem;
+    padding: 0;
+    counter-reset: song-counter;
 }
 
 .song-list li {
     position: relative;
-    padding: 1rem 1rem 1rem 1.5rem;
+    padding: 1rem 2.5rem 1rem 1.5rem;
     background: rgba(255,255,255,0.05);
     transition: all 0.3s ease;
+    counter-increment: song-counter;
+    min-height: 60px;
+    break-inside: avoid;
+    margin-bottom: 1rem;
 }
 
 .song-list li::before {
+    content: counter(song-counter);
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0, 204, 228, 0.2);
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: 'Bebas Neue', sans-serif;
+}
+
+.song-list li::after {
     content: '';
     position: absolute;
     left: 0;
@@ -232,6 +249,19 @@ section {
     color: #00cce4;
     font-size: 0.9rem;
     margin-top: 0.3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .song-list {
+        columns: 2; /* 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 600px) {
+    .song-list {
+        columns: 1; /* 1 column on small screens */
+    }
 }
 
 /* ===== LIVE SECTION ===== */
@@ -278,15 +308,19 @@ section {
     list-style: none;
     max-width: 800px;
     margin: 0 auto;
+    padding: 0;
 }
 
 .tour-item {
     position: relative;
-    padding: 1.5rem;
+    padding: 1rem 1rem 1rem 1.5rem;
     background: rgba(255,255,255,0.05);
     transition: all 0.3s ease;
-    border-left: 3px solid #00cce4;
     margin-bottom: 1rem;
+    border-left: 3px solid #00cce4;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .tour-item:last-child {
@@ -295,15 +329,6 @@ section {
 
 .tour-item:hover {
     background: rgba(0,204,228,0.1);
-    transform: translateX(5px);
-}
-
-.tour-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1rem;
 }
 
 .tour-date {
@@ -313,11 +338,12 @@ section {
     letter-spacing: 1px;
     font-size: 1.2rem;
     min-width: 120px;
+    flex-shrink: 0;
 }
 
 .tour-details {
     flex: 1;
-    min-width: 200px;
+    padding-right: 1rem;
 }
 
 .tour-venue {
@@ -330,6 +356,39 @@ section {
     display: block;
     color: #aaa;
     font-size: 0.9rem;
+}
+
+.tour-btn {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+    background: #00cce4;
+    color: black;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .tour-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+    
+    .tour-details {
+        padding-right: 0;
+        width: 100%;
+    }
+    
+    .tour-btn {
+        margin-top: 0.5rem;
+        align-self: flex-start;
+    }
 }
 
 /* ===== CONTACT SECTION ===== */
@@ -389,7 +448,7 @@ section {
 
 .btn:hover, .tour-btn:hover {
     background: #00a5b9;
-    transform: translateY(-3px);
+    transform: scale(1.02);
     box-shadow: 0 5px 15px rgba(0,204,228,0.4);
 }
 
@@ -426,11 +485,8 @@ nav > div > a {
     position: relative;
 }
 
-nav > div > a:hover {
-    color: #00cce4;
-}
-
-nav a::after {
+/* This creates the underline effect only for links inside the nav div */
+nav > div > a::after {
     content: '';
     position: absolute;
     bottom: -5px;
@@ -441,7 +497,7 @@ nav a::after {
     transition: width 0.3s ease;
 }
 
-nav a:hover::after {
+nav > div > a:hover::after {
     width: 100%;
 }
 
