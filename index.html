@@ -11,13 +11,16 @@
 <body>
    <nav>
     <a href="#"><img src="images/logo.png" alt="BuFi Logo" class="logo"></a>
-    <div>
+    <div class="nav-links" id="navLinks">
         <a href="#about">O kapele</a>
         <a href="#music">Nahrávky</a>
         <a href="#setlist">Setlist</a>
         <a href="#live">Video</a>
         <a href="#tour">Koncerty</a>
         <a href="#contact">Kontakty</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+        <i class="fas fa-bars"></i>
     </div>
 </nav>
 
@@ -35,8 +38,8 @@
     
     <p>Žánrově se škatulkovat nechceme, ale když musíme, tak tomu říkáme <span class="highlight">art-punk</span>.</p>
     
-    <p>Z našeho repertoáru budeš něco znát a něco možná uslyšíš poprvé,<br> ale 
-        <span class="highlight">nudit se určitě nebudeš!</span></p>
+    <p>Z našeho repertoáru budeš něco znát a něco možná uslyšíš poprvé, 
+        <strong>ale nudit se určitě nebudeš!</strong></p>
     </div>
 
 
@@ -175,5 +178,24 @@
     <footer>
         <p>&copy; 2025 Burned Fingers (BuFi)</p>
     </footer>
+
+    <script>
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('#navLinks a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>

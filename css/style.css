@@ -480,6 +480,14 @@ nav > div > a:hover::after {
     width: 100%;
 }
 
+/* Hamburger menu */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: white;
+}
+
 /* ===== FOOTER ===== */
 footer {
     text-align: center;
@@ -499,50 +507,136 @@ footer p {
         font-size: 0.9rem;
     }
 
-    h1 { 
-        font-size: 3rem; 
-    }
-    
     h2 { 
         font-size: 2rem; 
     }
 
-    .band-members {
-        flex-direction: column;
-        align-items: center;
+    .about-content {
+        font-size: 1rem;
     }
 
-    .song-list {
-        grid-template-columns: 1fr;
+    .band-members {
+        gap: 1.5rem;
+    }
+
+    .member {
+        width: 120px;
+    }
+
+    .member h3 {
+        font-size: 1rem;
+    }
+
+    .song-list li {
+        padding: 0.8rem 2rem 0.8rem 1.2rem;
+        min-height: 50px;
+    }
+
+    .song-name {
+        font-size: 0.9rem;
+    }
+
+    .song-name span {
+        font-size: 0.8rem;
+    }
+
+    .tour-item {
+        flex-wrap: wrap;
+        padding: 0.8rem;
     }
 
     .tour-date {
-        flex-direction: column;
-        gap: 0.5rem;
-        text-align: center;
+        font-size: 1.2rem;
+        min-width: 100px;
     }
 
-    nav {
-        flex-direction: column;
-        padding: 1rem;
+    .tour-details {
+        padding-right: 0;
+        width: 100%;
+        order: 3;
+        margin-top: 0.5rem;
     }
 
-    nav a {
+    .tour-btn {
+        margin-left: auto;
+    }
+
+    /* Hamburger menu styles */
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,0.9);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        clip-path: circle(0px at 90% -10%);
+        transition: all 0.5s ease-out;
+        pointer-events: none;
+    }
+
+    .nav-links.active {
+        clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+    }
+
+    .nav-links a {
         margin: 0.5rem 0;
+        padding: 0.5rem 0;
+        font-size: 1rem;
+    }
+
+    .desktop-only {
+        display: none;
     }
 }
 
 @media (max-width: 480px) {
     section {
-        padding: 4rem 0;
+        padding: 3rem 0;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
     }
     
     .hero-logo {
         max-width: 300px;
     }
-    
-    .tour-btn {
-        margin-top: 1rem;
-        align-self: center;
+
+    .band-members {
+        gap: 1rem;
+    }
+
+    .member {
+        width: 100px;
+    }
+
+    .track {
+        padding: 1rem;
+    }
+
+    .song-list li {
+        padding: 0.7rem 1.5rem 0.7rem 1rem;
+        min-height: 45px;
+    }
+
+    .video-caption {
+        font-size: 0.8rem;
+    }
+
+    .social-links {
+        gap: 1.5rem;
+    }
+
+    .social-links a {
+        font-size: 1.3rem;
+        width: 36px;
+        height: 36px;
     }
 }
