@@ -45,11 +45,13 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(rgba(0, 0, 0, 0.32), rgb(0, 0, 0)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgb(0, 0, 0)), 
                 url('../images/backdrop.webp') center/cover;
     text-align: center;
     margin-bottom: 0;
 }
+
+
 
 .hero-logo {
     max-width: 700px;
@@ -571,25 +573,28 @@ footer p {
         top: 100%;
         left: 0;
         width: 100%;
-        background: rgba(0,0,0,0.9);
+        background: rgba(0,0,0,0.95);
         flex-direction: column;
-        align-items: center;
-        padding: 1rem 0;
+        align-items: flex-start; /* Changed from center to left-align */
+        padding: 1rem;
         clip-path: circle(0px at 90% -10%);
         transition: all 0.5s ease-out;
         pointer-events: none;
     }
 
-    .nav-links.active {
-        clip-path: circle(1000px at 90% -10%);
-        pointer-events: all;
+    .nav-links a {
+        display: block; /* Make links full width */
+        width: 100%;
+        margin: 0.5rem 0;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255,255,255,0.1); /* Optional divider */
     }
 
-    .nav-links a {
-        margin: 0.5rem 0;
-        padding: 0.5rem 0;
-        font-size: 1rem;
+    .nav-links a:last-child {
+        border-bottom: none;
     }
+}
 
     .desktop-only {
         display: none;
