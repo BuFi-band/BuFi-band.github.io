@@ -277,13 +277,11 @@ section {
     }
 }
 
-/*
 @media (max-width: 820px) {
     .song-list {
         columns: 1;
     }
 }
-*/
 
 /* ===== LIVE SECTION ===== */
 #live {
