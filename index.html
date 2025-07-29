@@ -195,29 +195,29 @@
         });
 
         // Animation on scroll with reset capability
-        let lastScrollPosition = window.pageYOffset;
+let lastScrollPosition = window.pageYOffset;
+
+const animateOnScroll = () => {
+    const currentScrollPosition = window.pageYOffset;
+    const scrollingDown = currentScrollPosition > lastScrollPosition;
+    lastScrollPosition = currentScrollPosition;
+    
+    const elements = document.querySelectorAll('[data-animate]');
+    
+    elements.forEach(element => {
+        const elementPosition = element.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1;
         
-        const animateOnScroll = () => {
-            const currentScrollPosition = window.pageYOffset;
-            const scrollingDown = currentScrollPosition > lastScrollPosition;
-            lastScrollPosition = currentScrollPosition;
-            
-            const elements = document.querySelectorAll('[data-animate]');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                
-                // If element is in view
-                if (elementPosition < screenPosition) {
-                    element.classList.add('animate-rise', 'delay-1');
-                }
-                // If scrolling up and element is above view
-                else if (!scrollingDown && elementPosition > window.innerHeight) {
-                    element.classList.remove('animate-rise', 'delay-1');
-                }
-            });
-        };
+        // If element is in view
+        if (elementPosition < screenPosition) {
+            element.classList.add('animate-rise', 'delay-1');
+        }
+        // If scrolling up and element is above view
+        else if (!scrollingDown && elementPosition > window.innerHeight) {
+            element.classList.remove('animate-rise', 'delay-1');
+        }
+    });
+};
 
         // Run on load and scroll
         window.addEventListener('load', animateOnScroll);
