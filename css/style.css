@@ -557,15 +557,15 @@ footer p {
 
     .song-list li {
         padding: 0.8rem 2rem 0.8rem 1.2rem;
-        min-height: 100px;
+        min-height: 50px;
     }
 
     .song-name {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     .song-name span {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
    .tour-item {
