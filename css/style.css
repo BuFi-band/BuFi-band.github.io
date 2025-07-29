@@ -52,15 +52,11 @@ section {
 }
 
 .animate-rise {
-    animation: riseUp 0.8s ease forwards;
+    animation: riseUp 0.5s ease forwards;
 }
 
-/* Delay classes for staggered animations */
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
-.delay-5 { animation-delay: 0.5s; }
+/* Single delay class for all elements */
+.delay-1 { animation-delay: 0.2s; }
 
 /* Initially hide animated elements */
 [data-animate] {
