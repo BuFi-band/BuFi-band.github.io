@@ -39,6 +39,34 @@ section {
     margin-bottom: 2rem;
 }
 
+/* ===== ANIMATIONS ===== */
+@keyframes riseUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-rise {
+    animation: riseUp 0.8s ease forwards;
+}
+
+/* Delay classes for staggered animations */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+.delay-4 { animation-delay: 0.4s; }
+.delay-5 { animation-delay: 0.5s; }
+
+/* Initially hide animated elements */
+[data-animate] {
+    opacity: 0;
+}
+
 /* ===== HERO SECTION ===== */
 #hero {
     height: 100vh;
