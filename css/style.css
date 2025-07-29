@@ -56,7 +56,7 @@ section {
 }
 
 /* Single delay class for all elements */
-.delay-1 { animation-delay: 0.2s; }
+.delay-1 { animation-delay: 0.1s; }
 
 /* Initially hide animated elements */
 [data-animate] {
