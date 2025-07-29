@@ -80,7 +80,7 @@ section {
     max-width: 80%;
     width: auto;
     height: auto;
-    max-height: 60vh;
+    max-height: 80vh;
     margin-bottom: 2rem;
     filter: drop-shadow(0 0 15px rgba(0, 132, 147, 0.736));
     transition: all 0.3s ease;
