@@ -358,7 +358,7 @@ section {
     font-weight: bold;
     font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 1px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     min-width: 120px;
     flex-shrink: 0;
 }
@@ -372,7 +372,7 @@ section {
     display: block;
     color: white;
     margin-bottom: 0.3rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: bold;
 }
 
@@ -496,6 +496,10 @@ nav .logo {
     letter-spacing: 1px;
     transition: all 0.3s ease;
     position: relative;
+}
+
+.nav-links a:hover {
+    color: #00cce4;
 }
 
 .nav-links a::after {
@@ -633,6 +637,10 @@ footer p {
         font-size: 1.2rem;
         opacity: 0;
         transition: opacity 0.3s ease 0.2s;
+    }
+
+    .nav-links a::after {
+        bottom: 8px;
     }
 
     .nav-links.active a {
