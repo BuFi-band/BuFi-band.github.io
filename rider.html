@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Rider – BuFi Band</title>
+    <style>
+        /* ===== RESET / MONOCHROME BOLD BASE ===== */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #ccc;  /* neutral background, only for screen */
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 10px 5px;
+            margin: 0;
+        }
+        .container {
+            max-width: 1300px;      /* wider – fits more content per line */
+            width: 100%;
+            background: #ffffff;
+            border: 4px solid #000;
+            padding: 35px 40px;
+            box-shadow: 12px 12px 0 rgba(0,0,0,0.2);
+        }
+
+        /* TYPOGRAPHY – heavy, industrial */
+        h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -3px;
+            text-transform: uppercase;
+            border-bottom: 10px solid #000;
+            margin: 0 0 10px 0;
+            line-height: 1;
+        }
+        .band {
+            font-size: 1.8rem;
+            font-weight: 800;
+            border-left: 12px solid #000;
+            padding-left: 20px;
+            margin-bottom: 35px;
+            text-transform: uppercase;
+        }
+        h2 {
+            background: #000;
+            color: #fff;
+            padding: 15px 20px;
+            margin: 45px 0 20px 0;
+            font-size: 2.2rem;
+            text-transform: uppercase;
+            border: 3px solid #000;
+            letter-spacing: -0.5px;
+        }
+        h2:first-of-type { margin-top: 15px; }
+
+        /* 2x2 gear grid */
+        .gear-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 25px 0 20px;
+        }
+        .gear-box {
+            border: 4px solid #000;
+            background: #fafafa;
+            padding: 25px 25px 30px 25px;
+        }
+        .gear-box h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            border-bottom: 5px solid #000;
+            padding-bottom: 10px;
+            margin: 0 0 20px 0;
+            text-transform: uppercase;
+        }
+        .gear-box ul {
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding-left: 30px;
+        }
+        .gear-box li { margin: 8px 0; }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 4px solid #000;
+            margin: 30px 0 20px;
+            font-size: 1.3rem;
+        }
+        th, td {
+            border: 3px solid #000;
+            padding: 16px 12px;
+            text-align: left;
+            font-weight: 700;
+        }
+        th {
+            background: #eaeaea;
+            text-transform: uppercase;
+            font-size: 1.4rem;
+        }
+        .own-gear { background: #f1f1f1; border-left: 6px solid #000; }
+
+        /* STAGE PLOT */
+.stage-plot {
+    position: relative;
+    height: 400px;
+    border: 5px dashed #000;
+    margin: 40px 0 30px;
+    background: #f8f8f8;
+}
+.pos {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 5px solid #000;
+    background: #fff;
+    font-weight: 900;
+    font-size: 1.5rem;
+    padding: 10px;
+    box-shadow: 8px 8px 0 #ddd;
+}
+.drums {
+    width: 260px; height: 100px;
+    top: 20px; left: 50%; transform: translateX(-50%);
+}
+.bass {
+    width: 220px; height: 90px;
+    bottom: 40px; left: 5%;
+}
+.vox {
+    width: 240px; height: 90px;
+    bottom: 40px; left: 50%; transform: translateX(-50%);
+}
+.gt1 {
+    width: 220px; height: 90px;
+    bottom: 40px; right: 5%;
+}
+
+        /* MONITOR MIXES */
+        .monitor-stack { margin-top: 30px; }
+        .monitor-unit {
+            border: 5px solid #000;
+            padding: 35px 30px;
+            margin-bottom: 40px;
+            background: #f9f9f9;
+        }
+        .unit-header {
+            font-size: 2.2rem;
+            font-weight: 900;
+            border-bottom: 5px solid #000;
+            padding-bottom: 10px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        .mix-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 8px;
+            justify-items: center;
+        }
+        .channel-strip {
+            width: 100%;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .fader-track {
+            height: 260px;
+            width: 55px;
+            background: #eaeaea;
+            border: 4px solid #777;
+            position: relative;
+            margin-bottom: 18px;
+            display: flex; align-items: flex-end;
+        }
+        .fader-cap {
+            width: 100%;
+            background: #222;
+            border-top: 8px solid #000;
+        }
+        .channel-label {
+            font-size: 1.3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            writing-mode: horizontal-tb;
+            text-align: center;
+            line-height: 1.2;
+            max-width: 70px;
+        }
+
+        /* SETLIST */
+        .setlist-table {
+            font-size: 3.1rem;
+            table-layout: auto;
+        }
+        .setlist-table th {
+            font-size: 1.5rem;
+            padding: 16px;
+        }
+        .setlist-table td {
+            padding: 10px 15px;
+        }
+        .col-num {
+            width: 1%;
+            white-space: nowrap;
+            text-align: center;
+            background: #f1f1f1;
+            font-size: 1.5rem;
+        }
+        .col-song {
+            width: auto;
+            letter-spacing: -2px
+        }
+
+        /* POWER / MISC */
+        .power-section { margin-top: 30px; }
+        .power-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0 40px;
+            justify-content: center;
+        }
+        .power-item {
+            border: 5px solid #000;
+            background: #fafafa;
+            padding: 25px 40px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .power-item strong {
+            font-size: 2rem;
+            border-right: 5px solid #000;
+            padding-right: 20px;
+        }
+        .venue-highlight {
+            background: #000;
+            color: #fff;
+            padding: 20px 25px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            border: 4px solid #000;
+            text-align: center;
+            text-transform: uppercase;
+            width: 100%;
+            margin: 20px 0 10px;
+        }
+
+        /* A4 print optimization: avoid page breaks inside modules */
+        @media print {
+            body { background: none; padding: 0; }
+            .container { max-width: 100%; border: 2px solid #000; box-shadow: none; padding: 20px; }
+            h2 { background: #000 !important; color: #fff !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .gear-box, .monitor-unit, table, .stage-plot, .power-item { break-inside: avoid; }
+            .monitor-unit { page-break-inside: avoid; }
+            .gear-grid { break-inside: avoid; }
+            .pos { border: 2px solid #000; }
+        }
+
+        /* fine tune for very large screens, but nothing essential */
+        @media (min-width: 1600px) {
+            .container { max-width: 1500px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>TECHNICAL RIDER</h1>
+    <div class="band">BuFi Band</div>
+
+    <!-- 1. GEAR / BACKLINE — unchanged but wider grid -->
+    <h2>1. GEAR</h2>
+    <div class="gear-grid">
+        <div class="gear-box"><h3>TEREZA (VOX/GUIT 2)</h3><ul><li>Les Paul</li><li>Boss Katana 50 MK1</li><li>OD guit. pedal</li><li>Shure Beta 58A (own)</li><li>Shure GLX4R + Shure WH20 (only 1 song)</li></ul></div>
+        <div class="gear-box"><h3>ERIK (BASS)</h3><ul><li>EBMM Stingray</li><li>GK 700RBII + GK Neo 212 ii</li><li>Darkglass VMT Deluxe V2, MXR M87 Compressor,<br>EHX Bass Soul Food</li></ul></div>
+        <div class="gear-box"><h3>HONZA (GUIT 1)</h3><ul><li>Stratocaster</li><li>Mesa Triple Rectifier</li><li>Marshall 412 Cab</li><li>Boss Katana 50 MK2</li><li>OD guit. pedal</li></ul></div>
+        <div class="gear-box"><h3>TOMÁŠ (DRUMS)</h3><ul><li>Kick, Snare, 3 Toms</li><li>Hi-Hat, Crash, Ride</li><li>Std. Shell Set</li></ul></div>
+    </div>
+
+    <!-- 2. INPUT LIST — generous spacing, venue mics clearly marked -->
+    <h2>2. INPUT LIST</h2>
+    <table>
+        <thead><tr><th style="width:90px;">CH</th><th>SOURCE</th><th>MIC / DI</th></tr></thead>
+        <tbody>
+            <tr><td>1</td><td>VOCAL (Tereza)</td><td class="own-gear">BETA 58A (own) / Shure GLX4R + Shure WH20 (only 1 song)</td></tr>
+            <tr><td>2</td><td>GUITAR 1 (Honza)</td><td>venue mic</td></tr>
+            <tr><td>3</td><td>GUITAR 2 (Tereza)</td><td>venue mic</td></tr>
+            <tr><td>4</td><td>BASS (Erik)</td><td class="own-gear">DI (from GK head)</td></tr>
+            <tr><td>5</td><td>KICK</td><td>venue mic</td></tr>
+            <tr><td>6</td><td>SNARE</td><td>venue mic</td></tr>
+            <tr><td>7</td><td>TOM High</td><td>venue mic</td></tr>
+            <tr><td>8</td><td>TOM Middle</td><td>venue mic</td></tr>
+            <tr><td>9</td><td>TOM Floor</td><td>venue mic</td></tr>
+            <tr><td>10</td><td>OVERHEADS (pair)</td><td>venue mics</td></tr>
+        </tbody>
+    </table>
+
+    <!-- 3. STAGE PLOT — larger blocks, no crowding -->
+    <h2>3. STAGE PLOT</h2>
+    <div class="stage-plot">
+        <div class="pos drums">TOMÁŠ<br>(Drums)</div>
+        <div class="pos bass">ERIK<br>(Bass)</div>
+        <div class="pos vox">TEREZA<br>(Vox/Guit 2)</div>
+        <div class="pos gt1">HONZA<br>(Guit 1)</div>
+    </div>
+
+    <!-- 4. MONITOR MIXES -->
+    <h2>4. MONITOR MIXES</h2>
+    <div class="monitor-stack">
+        <!-- mix 1 Tereza -->
+        <div class="monitor-unit">
+            <div class="unit-header">MIX 1: TEREZA (Center)</div>
+            <div class="mix-grid">
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:100%;"></div></div><div class="channel-label">VOX</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:60%;"></div></div><div class="channel-label">GUIT 1</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:60%;"></div></div><div class="channel-label">GUIT 2</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:60%;"></div></div><div class="channel-label">BASS</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:50%;"></div></div><div class="channel-label">KICK</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:30%;"></div></div><div class="channel-label">SNARE</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM H</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM M</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM F</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">OH</div></div>
+            </div>
+        </div>
+        <!-- mix 2 Erik -->
+        <div class="monitor-unit">
+            <div class="unit-header">MIX 2: ERIK (Left)</div>
+            <div class="mix-grid">
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:85%;"></div></div><div class="channel-label">VOX</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:70%;"></div></div><div class="channel-label">GUIT 1</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:40%;"></div></div><div class="channel-label">GUIT 2</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:85%;"></div></div><div class="channel-label">BASS</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:60%;"></div></div><div class="channel-label">KICK</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:30%;"></div></div><div class="channel-label">SNARE</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM H</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM M</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM F</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">OH</div></div>
+            </div>
+        </div>
+        <!-- mix 3 Honza -->
+        <div class="monitor-unit">
+            <div class="unit-header">MIX 3: HONZA (Right)</div>
+            <div class="mix-grid">
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:85%;"></div></div><div class="channel-label">VOX</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:65%;"></div></div><div class="channel-label">GUIT 1</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:30%;"></div></div><div class="channel-label">GUIT 2</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:85%;"></div></div><div class="channel-label">BASS</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:60%;"></div></div><div class="channel-label">KICK</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:40%;"></div></div><div class="channel-label">SNARE</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM H</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM M</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM F</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">OH</div></div>
+            </div>
+        </div>
+        <!-- mix 4 Tomáš (drums) – typically no monitors for drums, but kept for completeness -->
+        <div class="monitor-unit">
+            <div class="unit-header">MIX 4: TOMÁŠ (Drums)</div>
+            <div class="mix-grid">
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">VOX</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">GUIT 1</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">GUIT 2</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">BASS</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">KICK</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">SNARE</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM H</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM M</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">TOM F</div></div>
+                <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">OH</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. SETLIST -->
+    
+    <h2>5. SETLIST</h2>
+    <table class="setlist-table">
+        <thead>
+            <tr>
+                <th class="col-num">#</th>
+                <th class="col-song">SONG / ARTIST</th>
+                <th class="col-num">BPM</th>
+                <th class="col-num">YEAR</th>
+                <th class="col-num">AGE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td class="col-num">1</td><td class="col-song">Ramones - Pet Sematary</td><td class="col-num">146</td><td class="col-num">1989</td><td class="col-num">37</td></tr>
+            <tr><td class="col-num">2</td><td class="col-song">Blue Öyster Cult - Burnin' For You</td><td class="col-num">135</td><td class="col-num">1981</td><td class="col-num">45</td></tr>
+            <tr><td class="col-num">3</td><td class="col-song">Patti Smith - Because the Night</td><td class="col-num">122</td><td class="col-num">1978</td><td class="col-num">48</td></tr>
+            <tr><td class="col-num">4</td><td class="col-song">Green Day - Boulevard of Broken Dreams</td><td class="col-num">83</td><td class="col-num">2004</td><td class="col-num">22</td></tr>
+            <tr><td class="col-num">5</td><td class="col-song">The Fialky - Punk sex pivo</td><td class="col-num">182</td><td class="col-num">2007</td><td class="col-num">19</td></tr>
+            <tr><td class="col-num">6</td><td class="col-song">The Smiths -<br>There Is a Light That Never Goes Out</td><td class="col-num">134</td><td class="col-num">1986</td><td class="col-num">40</td></tr>
+            <tr><td class="col-num">7</td><td class="col-song">Popeláři / Kladeňáci</td><td class="col-num">128</td><td class="col-num">2014</td><td class="col-num">12</td></tr>
+            <tr><td class="col-num">8</td><td class="col-song">Vypsaná fixa - Měla krátkou ofinu</td><td class="col-num">145</td><td class="col-num">2014</td><td class="col-num">12</td></tr>
+            <tr><td class="col-num">9</td><td class="col-song">Journey - Don't Stop Believin'</td><td class="col-num">120</td><td class="col-num">1981</td><td class="col-num">45</td></tr>
+            <tr><td class="col-num">10</td><td class="col-song">The Box Tops - The Letter</td><td class="col-num">140</td><td class="col-num">1967</td><td class="col-num">59</td></tr>
+            <tr><td class="col-num">11</td><td class="col-song">BuFi - Přetrhaná pouta</td><td class="col-num">120</td><td class="col-num">2025</td><td class="col-num">1</td></tr>
+            <tr><td class="col-num">12</td><td class="col-song">Karel Kryl - Karavana mraků</td><td class="col-num">75</td><td class="col-num">1979</td><td class="col-num">47</td></tr>
+            <tr><td class="col-num">13</td><td class="col-song">Ivan Mládek - Jožin z bažin</td><td class="col-num">113</td><td class="col-num">1977</td><td class="col-num">49</td></tr>
+            <tr><td class="col-num">14</td><td class="col-song">Arctic monkeys - Do I Wanna Know</td><td class="col-num">85</td><td class="col-num">2013</td><td class="col-num">13</td></tr>
+            <tr><td class="col-num">15</td><td class="col-song">Blink-182 - What's My Age Again?</td><td class="col-num">156</td><td class="col-num">1999</td><td class="col-num">27</td></tr>
+        </tbody>
+    </table>
+
+    <!-- 6. POWER & MISC – outlet blocks + venue statement -->
+
+    <h2>6. POWER / MISC</h2>
+    <div class="power-list">
+        <div class="power-item"><strong>ERIK</strong> 1 outlet</div>
+        <div class="power-item"><strong>TEREZA</strong> 2 outlets</div>
+        <div class="power-item"><strong>HONZA</strong> 2 outlets</div>
+    </div>
+    <div class="venue-highlight">
+        Venue provides all stands, monitors and mics (specified in input list).
+    </div>
+
+    <!-- tiny spacer: ensures nothing gets cut -->
+    <div style="height: 10px;"></div>
+</div>
+</body>
+</html>
