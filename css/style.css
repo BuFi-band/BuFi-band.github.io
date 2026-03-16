@@ -552,6 +552,11 @@ footer p {
         justify-items: center;
         gap: 2rem;
         margin-top: 3.7rem;
+        display: grid;
+        grid-template-columns: repeat(2, 180px);
+        justify-items: center;
+        gap: 2rem;
+        margin-top: 3.7rem;
     }
 
     .member {
@@ -564,6 +569,10 @@ footer p {
 
     .song-list {
         columns: 2;
+    }
+
+    #about{
+        margin-top: -110px;
     }
 
     #about{
