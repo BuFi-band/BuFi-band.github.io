@@ -89,7 +89,6 @@ section {
 /* ===== ABOUT SECTION ===== */
 #about {
     text-align: center;
-    margin-top: -110px;
 }
 
 .about-content {
@@ -548,15 +547,15 @@ footer p {
     }
 
     .band-members {
-        display: grid; /* Switch from flex to grid to lock the layout */
-    grid-template-columns: repeat(2, 180px); /* Exactly 2 columns of 180px */
-    justify-items: center; /* Centers the whole 2x2 block */
-    gap: 2rem; /* Tightens the space between members */
-    margin-top: 3.7rem;
+        display: grid;
+        grid-template-columns: repeat(2, 180px);
+        justify-items: center;
+        gap: 2rem;
+        margin-top: 3.7rem;
     }
 
     .member {
-        width: 150px;
+        width: 130px;
     }
 
     .member h3 {
@@ -565,6 +564,10 @@ footer p {
 
     .song-list {
         columns: 2;
+    }
+
+    #about{
+        margin-top: -110px;
     }
 
     .song-list li {
