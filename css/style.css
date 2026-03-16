@@ -557,6 +557,10 @@ footer p {
 
     .band-members {
         gap: 1.5rem;
+        display: grid;               /* Switch from flex to grid */
+        grid-template-columns: 1fr 1fr; /* Force 2 equal columns */
+        gap: 2rem;                   /* Control the space between people */
+        justify-items: center;       /* Center the members in their grid slots */
     }
 
     .member {

@@ -8,16 +8,18 @@
         /* ===== RESET / MONOCHROME BOLD BASE ===== */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background: #ccc;  /* neutral background, only for screen */
+            background: #ccc;
             font-family: 'Courier New', Courier, monospace;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             padding: 10px 5px;
             margin: 0;
+            min-width: 1300px;
+            overflow-x: auto;
         }
         .container {
-            max-width: 1300px;      /* wider – fits more content per line */
+            max-width: 1300px;
             width: 100%;
             background: #ffffff;
             border: 4px solid #000;
@@ -104,42 +106,42 @@
         .own-gear { background: #f1f1f1; border-left: 6px solid #000; }
 
         /* STAGE PLOT */
-.stage-plot {
-    position: relative;
-    height: 400px;
-    border: 5px dashed #000;
-    margin: 40px 0 30px;
-    background: #f8f8f8;
-}
-.pos {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    border: 5px solid #000;
-    background: #fff;
-    font-weight: 900;
-    font-size: 1.5rem;
-    padding: 10px;
-    box-shadow: 8px 8px 0 #ddd;
-}
-.drums {
-    width: 260px; height: 100px;
-    top: 20px; left: 50%; transform: translateX(-50%);
-}
-.bass {
-    width: 220px; height: 90px;
-    bottom: 40px; left: 5%;
-}
-.vox {
-    width: 240px; height: 90px;
-    bottom: 40px; left: 50%; transform: translateX(-50%);
-}
-.gt1 {
-    width: 220px; height: 90px;
-    bottom: 40px; right: 5%;
-}
+        .stage-plot {
+            position: relative;
+            height: 400px;
+            border: 5px dashed #000;
+            margin: 40px 0 30px;
+            background: #f8f8f8;
+        }
+        .pos {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 5px solid #000;
+            background: #fff;
+            font-weight: 900;
+            font-size: 1.5rem;
+            padding: 10px;
+            box-shadow: 8px 8px 0 #ddd;
+        }
+        .drums {
+            width: 260px; height: 100px;
+            top: 20px; left: 50%; transform: translateX(-50%);
+        }
+        .bass {
+            width: 220px; height: 90px;
+            bottom: 40px; left: 5%;
+        }
+        .vox {
+            width: 240px; height: 90px;
+            bottom: 40px; left: 50%; transform: translateX(-50%);
+        }
+        .gt1 {
+            width: 220px; height: 90px;
+            bottom: 40px; right: 5%;
+        }
 
         /* MONITOR MIXES */
         .monitor-stack { margin-top: 30px; }
@@ -275,16 +277,16 @@
     <h1>TECHNICAL RIDER</h1>
     <div class="band">BuFi Band</div>
 
-    <!-- 1. GEAR / BACKLINE — unchanged but wider grid -->
+    <!-- 1. GEAR / BACKLINE -->
     <h2>1. GEAR</h2>
     <div class="gear-grid">
         <div class="gear-box"><h3>TEREZA (VOX/GUIT 2)</h3><ul><li>Les Paul</li><li>Boss Katana 50 MK1</li><li>OD guit. pedal</li><li>Shure Beta 58A (own)</li><li>Shure GLX4R + Shure WH20 (only 1 song)</li></ul></div>
-        <div class="gear-box"><h3>ERIK (BASS)</h3><ul><li>EBMM Stingray</li><li>GK 700RBII + GK Neo 212 ii</li><li>Darkglass VMT Deluxe V2, MXR M87 Compressor,<br>EHX Bass Soul Food</li></ul></div>
+        <div class="gear-box"><h3>ERIK (BASS)</h3><ul><li>EBMM Stingray</li><li>GK 700RB-II + GK Neo 212-II</li><li>Darkglass VMT Deluxe V2, MXR M87 Compressor,<br>EHX Bass Soul Food</li></ul></div>
         <div class="gear-box"><h3>HONZA (GUIT 1)</h3><ul><li>Stratocaster</li><li>Mesa Triple Rectifier</li><li>Marshall 412 Cab</li><li>Boss Katana 50 MK2</li><li>OD guit. pedal</li></ul></div>
         <div class="gear-box"><h3>TOMÁŠ (DRUMS)</h3><ul><li>Kick, Snare, 3 Toms</li><li>Hi-Hat, Crash, Ride</li><li>Std. Shell Set</li></ul></div>
     </div>
 
-    <!-- 2. INPUT LIST — generous spacing, venue mics clearly marked -->
+    <!-- 2. INPUT LIST -->
     <h2>2. INPUT LIST</h2>
     <table>
         <thead><tr><th style="width:90px;">CH</th><th>SOURCE</th><th>MIC / DI</th></tr></thead>
@@ -302,7 +304,7 @@
         </tbody>
     </table>
 
-    <!-- 3. STAGE PLOT — larger blocks, no crowding -->
+    <!-- 3. STAGE PLOT -->
     <h2>3. STAGE PLOT</h2>
     <div class="stage-plot">
         <div class="pos drums">TOMÁŠ<br>(Drums)</div>
@@ -362,7 +364,7 @@
                 <div class="channel-strip"><div class="fader-track"><div class="fader-cap" style="height:0%;"></div></div><div class="channel-label">OH</div></div>
             </div>
         </div>
-        <!-- mix 4 Tomáš (drums) – typically no monitors for drums, but kept for completeness -->
+        <!-- mix 4 Tomáš (drums) -->
         <div class="monitor-unit">
             <div class="unit-header">MIX 4: TOMÁŠ (Drums)</div>
             <div class="mix-grid">
