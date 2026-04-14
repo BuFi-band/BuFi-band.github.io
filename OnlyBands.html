@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnlyBands | BuFi Private</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS úpravy pro vzhled poznámek */
+        #notes-input {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid #333;
+            margin-bottom: 3rem;
+        }
+        textarea {
+            width: 100%;
+            background: #111;
+            border: 1px solid #00cce4;
+            color: white;
+            padding: 15px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        #notes-display-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .note-card {
+            background: #1a1a1a;
+            border-left: 4px solid #00cce4;
+            padding: 1.5rem;
+            border-radius: 4px;
+            animation: fadeIn 0.4s ease;
+        }
+        .note-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px solid #333;
+            padding-bottom: 0.5rem;
+        }
+        .note-date { font-weight: 600; color: #00cce4; }
+        .note-body { color: #eee; line-height: 1.6; white-space: pre-wrap; font-size: 1.1rem; }
+        .delete-btn { background: none; border: none; color: #444; cursor: pointer; font-size: 1.1rem; transition: color 0.2s; }
+        .delete-btn:hover { color: #ff4444; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html"><img src="images/logo.png" alt="BuFi Logo" class="logo"></a>
+        <div class="nav-links">
+            <a href="index.html">Zpět na web</a>
+        </div>
+    </nav>
+
+    <section id="hero" style="min-height: 40vh;">
+        <div data-animate class="animate-rise">
+            <h1 style="font-family: 'Bebas Neue'; font-size: 4rem; color: #00cce4;">ONLY BANDS</h1>
+            <p>Plány, poznámky a ostatní kapelní bordel</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section id="notes-input">
+            <h2>Nová poznámka</h2>
+            <textarea id="noteText" placeholder="Co jsme dneska podělali?" rows="5"></textarea>
+            <button class="btn" onclick="sendNote()" style="width: 100%;">Přidat poznámku</button>
+        </section>
+
+        <section id="notes-display">
+            <h2>Zeď poznámek</h2>
+            <div id="notes-display-list">
+                <p style="text-align:center; opacity:0.5;">Načítám poznámky...</p>
+            </div>
+        </section>
+
+        <section id="song-choose" style="opacity: 0.5; margin-top: 5rem;" data-animate>
+            <h2 style="color: #666;">Hlasování o songy (Coming Soon)</h2>
+            <p style="text-align: center;">Třeba někdy dodělám</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Erik Weglarz</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
+
+    <script>
+        // 1. Ochrana heslem
+        const password = prompt("Heslo pro kapelu:");
+        if (password !== "x") {
+            alert("Spatne heslo!");
+            window.location.href = "index.html";
+        }
+
+        // 2. Firebase konfigurace
+        const firebaseConfig = {
+            apiKey: "AIzaSyBR1E4oQidv2gTOuC9-RWLv9YU0pOXl8yc",
+            authDomain: "bufi-band.firebaseapp.com",
+            projectId: "bufi-band",
+            storageBucket: "bufi-band.firebasestorage.app",
+            messagingSenderId: "577652600177",
+            appId: "1:577652600177:web:54ab752fa4f1d3a265dad0",
+            measurementId: "G-57G89B9EXY",
+            databaseURL: "https://bufi-band-default-rtdb.europe-west1.firebasedatabase.app/" 
+        };
+
+        // Inicializace Firebase v COMPAT režimu
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        // 3. Funkce pro odeslání poznámky
+        function sendNote() {
+            const noteInput = document.getElementById('noteText');
+            const text = noteInput.value.trim();
+
+            if (!text) return alert("Napiš něco!");
+
+            db.ref('notes').push({
+                content: text,
+                timestamp: Date.now()
+            }).then(() => {
+                noteInput.value = ""; // Vymazat pole
+            }).catch(err => alert("Chyba při ukládání: " + err));
+        }
+
+        // 4. Synchronizace dat v reálném čase
+        db.ref('notes').orderByChild('timestamp').on('value', (snapshot) => {
+            const display = document.getElementById('notes-display-list');
+            display.innerHTML = ""; 
+
+            const data = snapshot.val();
+            if (!data) {
+                display.innerHTML = "<p style='text-align:center; opacity:0.5;'>Zatím žádné poznámky...</p>";
+                return;
+            }
+
+            // Obrátit pořadí (nejnovější nahoře)
+            const entries = Object.entries(data).reverse();
+
+            entries.forEach(([id, note]) => {
+                const date = new Date(note.timestamp).toLocaleString('cs-CZ', { 
+                    day: 'numeric', month: 'numeric', hour: '2-digit', minute: '2-digit' 
+                });
+
+                const noteHtml = `
+                    <div class="note-card">
+                        <div class="note-header">
+                            <span class="note-date">${date}</span>
+                            <button class="delete-btn" onclick="deleteNote('${id}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                        <div class="note-body">${note.content}</div>
+                    </div>
+                `;
+                display.insertAdjacentHTML('beforeend', noteHtml);
+            });
+        });
+
+        // 5. Funkce pro mazání
+        function deleteNote(id) {
+            if(confirm("Opravdu smazat?")) {
+                db.ref('notes/' + id).remove();
+            }
+        }
+    </script>
+</body>
+</html>
